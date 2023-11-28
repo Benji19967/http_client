@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "http_client"
+version = "0.1.0"
+description = "Base HTTP Client for Python"
+authors = [ "Benjamin Labrecque" ]
+packages = [
+    { include = "http_client" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+httpx = "^0.25.2"
+backoff = "^2.2.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+pytest = "^7.2.1"
+mypy = "^1.1.1"
+isort = "^5.12.0"
+# Supposedly quite fast, but need to figure out how to make it work with Neovim
+ruff = "^0.1.5"
+
+[tool.mypy]
+files = "http_client"
+strict = true
+namespace_packages = true
+explicit_package_bases = true
+
+# [tool.isort]
+# profile = "black"
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    # "E",
+    # Pyflakes
+    # "F",
+    # pyupgrade
+    # "UP",
+    # flake8-bugbear
+    # "B",
+    # flake8-simplify
+    # "SIM",
+    # isort
+    "I",
+]
+fixable = ["I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["http_client"]
