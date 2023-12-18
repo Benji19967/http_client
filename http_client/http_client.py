@@ -5,7 +5,8 @@ from http_client.exceptions import ClientError, ServerError
 
 
 class HTTPClient:
-    @backoff.on_exception(backoff.expo, (httpx.RequestError, ServerError))
+    # @backoff.on_exception(backoff.expo, (httpx.RequestError, ServerError))
+    @backoff.on_exception(backoff.expo, (ServerError))
     def _request(self, method: str, url: str) -> httpx.Response:
         if method == "GET":
             r = httpx.get(url)
